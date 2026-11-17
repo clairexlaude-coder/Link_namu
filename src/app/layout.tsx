@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { EditOverlay } from "@/components/dev/EditOverlay";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,7 +24,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        {children}
+        {/* 개발 중에만: 화면에서 구성요소를 클릭해 수정 요청 */}
+        {process.env.NODE_ENV === "development" && <EditOverlay />}
+      </body>
     </html>
   );
 }

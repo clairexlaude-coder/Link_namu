@@ -5,6 +5,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { getProfile, profiles } from "@/data/profiles";
 import { getClickCounts } from "@/lib/clicks";
+import { editable } from "@/lib/editable";
 
 export function generateStaticParams() {
   return profiles.map((p) => ({ username: p.username }));
@@ -46,7 +47,7 @@ async function ClickTable({ params }: { params: PageProps<"/[username]/stats">["
         {profile.name} · 전체{" "}
         <span className="font-semibold text-foreground tabular-nums">{total.toLocaleString()}</span>회
       </p>
-      <ul className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+      <ul {...editable("클릭 수 표", "src/app/[username]/stats/page.tsx")} className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
         {profile.links.map((link) => (
           <li key={link.id} className="flex items-center justify-between gap-4 px-5 py-4">
             <div className="min-w-0">

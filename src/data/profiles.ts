@@ -20,6 +20,7 @@ export const profiles: Profile[] = [
     username: "a4",
     name: "A4",
     bio: "오이쉬",
+    avatarUrl: "/avatars/a4.jpg",
     links: [
       { id: "instagram", title: "Instagram", url: "https://www.instagram.com/" },
       { id: "youtube", title: "YouTube", url: "https://www.youtube.com/" },
